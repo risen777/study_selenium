@@ -1,3 +1,5 @@
+package ru.aplana.firsthomework;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
