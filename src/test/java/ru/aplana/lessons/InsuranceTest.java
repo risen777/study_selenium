@@ -1,4 +1,4 @@
-package ru.aplana.firsthomework;
+package ru.aplana.lessons;
 
 import org.junit.After;
 import org.junit.Assert;
