@@ -88,6 +88,8 @@ public class SberbankTest {
                 driver.findElement(By.name("insured0_name")).getAttribute("value"));
         Assert.assertEquals("Иван",
                 driver.findElement(By.name("name")).getAttribute("value"));
+        Assert.assertEquals("Петров",
+                driver.findElement(By.name("surname")).getAttribute("value"));
 
         Assert.assertEquals("Иванович",
                 driver.findElement(By.name("middlename")).getAttribute("value"));
