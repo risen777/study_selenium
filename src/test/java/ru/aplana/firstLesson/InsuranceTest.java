@@ -1,9 +1,6 @@
-package ru.aplana.lessons;
+package ru.aplana.firstLesson;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.*;
 
 import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 
 /**
  * Created by Sergey
@@ -23,6 +19,7 @@ public class InsuranceTest {
 
 
     @Before
+
     public  void  beforeTest(){
         System.setProperty("webdriver.chrome.driver","drv/chromedriver.exe");
         driver=new ChromeDriver();
@@ -33,6 +30,7 @@ public class InsuranceTest {
     }
 
     @Test
+@Ignore
     public  void testInsurance(){
 driver.findElement(By.xpath("//ol[contains(@class,'rgs-menu')]/li/*[contains(text(),'Страхование')]")).click();
 driver.findElement(By.xpath("//div[contains(@class,'rgs-main-menu-category')]//a[contains(text(),'ДМС')]")).click();
@@ -65,7 +63,7 @@ driver.findElement(By.id("button-m")).click();
         Assert.assertEquals("Иванович",
                 driver.findElement(By.name("MiddleName")).getAttribute("value"));
         Assert.assertEquals("Введите адрес электронной почты",
-                driver.findElement(By.xpath("//*[text()='Эл. почта']/..//span[@class='validation-error-text']")).getText());
+                driver.findElement(By.xpath("//*[text()='Эл. почта']/..//*[@class='validation-error-mark']/..//span[@class='validation-error-text']")).getText());
     }
 
 
