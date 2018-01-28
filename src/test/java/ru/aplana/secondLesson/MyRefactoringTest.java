@@ -1,9 +1,10 @@
 package ru.aplana.secondLesson;
 
+import org.junit.Ignore;
 import org.junit.Test;
-import util.pages.DMSPage;
-import util.pages.MainPage;
-import util.pages.SendAppPage;
+import util.pagesIns.DMSPage;
+import util.pagesIns.MainPage;
+import util.pagesIns.SendAppPage;
 
 /**
  * Created by Sergey
@@ -11,7 +12,7 @@ import util.pages.SendAppPage;
 public class MyRefactoringTest extends BaseTest  {
 
     @Test
-
+    @Ignore
     public void newInsuranceTest(){
         driver.get(baseUrl);
         MainPage mainPage=new MainPage(driver);

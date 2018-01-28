@@ -37,7 +37,7 @@ public class SberbankTest {
 
     @Test
 
-
+    @Ignore
     public void testSberbank() {
         driver.findElement(By.xpath("//span[@class='multiline']//*[contains(text(),'Застраховать себя')]")).click();
         driver.findElement(By.xpath("//span[@class='multiline']//*[contains(text(),'и имущество')]")).click();
