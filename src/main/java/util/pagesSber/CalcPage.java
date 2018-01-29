@@ -51,7 +51,7 @@ public class CalcPage {
     @FindBy(name = "birthDate")
     WebElement birthDate;
 
-    @FindBy(xpath = "//*[contains(text(),'Пол')]/..//*[contains(@class,'b-radio-field b-checked-radio-field')]")
+    @FindBy(name = "male")
     WebElement sex;
 
     @FindBy(name = "passport_series")
@@ -75,6 +75,10 @@ public class CalcPage {
     public void clickSendNext() {
         sendNext.click();
     }
+    public void clickSex() {
+        sex.click();
+    }
+
     public void fillField(String fieldName, String value){
         switch (fieldName){
             case  "Фамилия застрахованного":
@@ -97,7 +101,7 @@ public class CalcPage {
                 fillField(birthDate, value);
                 break;
             case  "Пол":
-                fillField(sex, value);
+                fillField(sex, "male");
                 break;
             case  "Серия паспорта":
                 fillField(passportSeries, value);
