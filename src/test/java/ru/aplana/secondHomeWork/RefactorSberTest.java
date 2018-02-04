@@ -1,14 +1,9 @@
 package ru.aplana.secondHomeWork;
 
 import org.junit.Test;
-import org.openqa.selenium.Keys;
 import util.pagesSber.TravelPage;
 import util.pagesSber.MainPage;
 import util.pagesSber.CalcPage;
-
-
-import static ru.aplana.secondHomeWork.BaseTest.baseUrl;
-import static ru.aplana.secondHomeWork.BaseTest.driver;
 
 /**
  * Created by Sergey
@@ -22,6 +17,7 @@ public class RefactorSberTest extends BaseTest {
 
         driver.get(baseUrl);
         MainPage mainPage = new MainPage(driver);
+
         mainPage.selectMainMenu("Застраховать себя");
         mainPage.selectMainMenu("и имущество");
         mainPage.selectSubMenu("Страхование путешественников");
@@ -29,9 +25,10 @@ public class RefactorSberTest extends BaseTest {
         new TravelPage(driver).sendButton.click();
 
 
-        CalcPage calcPage = new CalcPage();
+        CalcPage calcPage=new CalcPage();
         calcPage.testSberbank(driver);
         calcPage.clickMinSum();
+
         calcPage.clickSendNext();
 
         calcPage.fillField("Фамилия застрахованного", "Ivanov");
@@ -45,7 +42,9 @@ public class RefactorSberTest extends BaseTest {
         calcPage.fillField("Номер паспорта", "112443");
         calcPage.fillField("Дата выдачи", "22.08.17");
         calcPage.fillField("Кем выдан", "ОВД");
-
+        calcPage.fillField("Электронная почта", "afa@gmail.com");
+        calcPage.clicksendButtonNext();
+calcPage.checkErrorMessage("Заполнены не все обязательные поля");
     }
 
 }
