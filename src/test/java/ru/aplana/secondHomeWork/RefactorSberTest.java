@@ -40,10 +40,24 @@ public class RefactorSberTest extends BaseTest {
         calcPage.clickSex();
         calcPage.fillField("Серия паспорта", "4613");
         calcPage.fillField("Номер паспорта", "112443");
-        calcPage.fillField("Дата выдачи", "22.08.17");
+        calcPage.fillField("Дата выдачи", "22.08.2017");
         calcPage.fillField("Кем выдан", "ОВД");
         calcPage.fillField("Электронная почта", "afa@gmail.com");
+
+
+
         calcPage.clicksendButtonNext();
+        calcPage.checkField("Фамилия застрахованного", "Ivanov");
+        calcPage.checkField("Имя застрахованного", "Ivan");
+        calcPage.checkField("Фамилия", "Петров");
+        calcPage.checkField("Имя", "Петр");
+        calcPage.checkField("Отчество", "Петрович");
+        calcPage.checkField("Дата рождения", "21.01.1991");
+        calcPage.checkField("Серия паспорта", "4613");
+        calcPage.checkField("Номер паспорта", "112443");
+        calcPage.checkField("Дата выдачи", "22.08.2017");
+        calcPage.checkField("Кем выдан", "ОВД");
+        calcPage.checkField("Электронная почта", "afa@gmail.com");
 calcPage.checkErrorMessage("Заполнены не все обязательные поля");
     }
 

@@ -20,17 +20,19 @@ import static org.junit.Assert.assertEquals;
  */
 public class CalcPage {
 
-        public void testSberbank(WebDriver driver) {
-            PageFactory.initElements(driver, this);
-            Wait<WebDriver> wait = new WebDriverWait(driver, 10, 1000);
 
-            while (!driver.getTitle().equals("Сбербанк страхование")) {
-                for (String handle : driver.getWindowHandles()) {
-                    driver.switchTo().window(handle);
+    public void testSberbank(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        Wait<WebDriver> wait = new WebDriverWait(driver, 10, 1000);
+
+        while (!driver.getTitle().equals("Сбербанк страхование")) {
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
 
 
-
-                }}}
+            }
+        }
+    }
 
     @FindBy(xpath = "//div[text() = 'Минимальная']/..")
     WebElement minSum;
@@ -81,7 +83,6 @@ public class CalcPage {
     public WebElement sendButtonNext;
 
 
-
     public void clickMinSum() {
         minSum.click();
     }
@@ -89,99 +90,143 @@ public class CalcPage {
     public void clickSendNext() {
         sendNext.click();
     }
+
     public void clickSex() {
         sex.click();
     }
+
     public void clicksendButtonNext() {
         sendButtonNext.click();
     }
 
-    public void fillField(String fieldName, String value){
-        switch (fieldName){
-            case  "Фамилия застрахованного":
+    public void fillField(String fieldName, String value) {
+        switch (fieldName) {
+            case "Фамилия застрахованного":
                 fillField(insLastName, value);
                 break;
-            case  "Имя застрахованного":
+            case "Имя застрахованного":
                 fillField(insFirstName, value);
                 break;
 
-            case  "Фамилия":
+            case "Фамилия":
                 fillField(lastName, value);
                 break;
-            case  "Имя":
+            case "Имя":
                 fillField(firstName, value);
                 break;
-            case  "Отчество":
+            case "Отчество":
                 fillField(middleName, value);
                 break;
-            case  "Дата рождения":
+            case "Дата рождения":
                 fillField(birthDate, value);
                 break;
-            case  "Пол":
+            case "Пол":
                 fillField(sex, "male");
                 break;
-            case  "Серия паспорта":
+            case "Серия паспорта":
                 fillField(passportSeries, value);
                 break;
-            case  "Номер паспорта":
+            case "Номер паспорта":
                 fillField(passportNumber, value);
                 break;
-            case  "Дата выдачи":
+            case "Дата выдачи":
                 fillField(issueDate, value);
                 issueDate.sendKeys(Keys.TAB);
                 break;
-            case  "Кем выдан":
+            case "Кем выдан":
                 fillField(issuePlace, value);
                 break;
-            case  "Электронная почта":
+            case "Электронная почта":
                 fillField(email, value);
                 break;
-            default:  throw new AssertionError("Поле '"+fieldName+"' не объявлено на странице");
+            default:
+                throw new AssertionError("Поле '" + fieldName + "' не объявлено на странице");
         }
     }
 
     //проверка правильности заполнения
 
-    public String getFillField(String fieldName){
-        switch (fieldName){
-            case  "Фамилия застрахованного":
-                return insLastName.getAttribute("value");
-            case  "Имя застрахованного":
-                return insFirstName.getAttribute("value");
+    public void checkField(String fieldToCheck, String valueCheck) {
 
-            case  "Фамилия":
-                return lastName.getAttribute("value");
+        switch (fieldToCheck) {
 
-            case  "Имя":
-                return firstName.getAttribute("value");
+            case "Фамилия застрахованного":
 
-            case  "Отчество":
-                return middleName.getAttribute("value");
+                assertEquals(valueCheck, insLastName.getAttribute("value"));
 
-            case  "Дата рождения":
-                return birthDate.getAttribute("value");
+                break;
 
-            case  "Серия паспорта":
-                return passportSeries.getAttribute("value");
+            case "Имя застрахованного":
 
-            case  "Номер паспорта":
-                return passportNumber.getAttribute("value");
+                assertEquals(valueCheck, insFirstName.getAttribute("value"));
 
-            case  "Дата выдачи":
-                return issueDate.getAttribute("value");
+                break;
 
-            case  "Кем выдан":
-                return issuePlace.getAttribute("value");
-            case  "Электронная почта":
-                return issuePlace.getAttribute("value");
+
+            case "Фамилия":
+
+                assertEquals(valueCheck, lastName.getAttribute("value"));
+
+                break;
+
+            case "Имя":
+
+                assertEquals(valueCheck, firstName.getAttribute("value"));
+
+                break;
+
+            case "Отчество":
+
+                assertEquals(valueCheck, middleName.getAttribute("value"));
+
+                break;
+
+            case "Дата рождения":
+
+                assertEquals(valueCheck, birthDate.getAttribute("value"));
+
+                break;
+
+            case "Серия паспорта":
+
+                assertEquals(valueCheck, passportSeries.getAttribute("value"));
+
+                break;
+
+            case "Номер паспорта":
+
+                assertEquals(valueCheck, passportNumber.getAttribute("value"));
+
+                break;
+
+            case "Дата выдачи":
+
+                assertEquals(valueCheck, issueDate.getAttribute("value"));
+
+                break;
+
+            case "Кем выдан":
+
+                assertEquals(valueCheck, issuePlace.getAttribute("value"));
+
+                break;
+            case "Электронная почта":
+
+                assertEquals(valueCheck, email.getAttribute("value"));
+
+                break;
+
+            default:
+
+                throw new AssertionError("Поле '" + fieldToCheck + "' не объявлено на странице");
 
         }
-        throw new AssertionError("Поле не объявлено на странице");
+
     }
 
-    public  void checkErrorMessage(String InputData){
+    public void checkErrorMessage(String InputData) {
 
-        assertEquals(InputData,errorMessage.getText());
+        assertEquals(InputData, errorMessage.getText());
 
     }
 
@@ -192,4 +237,6 @@ public class CalcPage {
     }
 
 
+    private class BaseSteps {
+    }
 }
